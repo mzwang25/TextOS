@@ -12,6 +12,21 @@ int 0x10
 mov al, 'o'
 int 0x10
 
+mov al, 0x20
+int 0x10
+mov al, 'W'
+int 0x10
+mov al, 'o'
+int 0x10
+mov al, 'r'
+int 0x10
+mov al, 'l'
+int 0x10
+mov al, 'd'
+int 0x10
+mov al, '!'
+int 0x10
+
 jmp $
 
 ; This tells the assembler to pad with 0s until 510's byte 
