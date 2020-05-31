@@ -1,7 +1,8 @@
 ## MichaelOS
 I'm going to try my best to follow through a tutorial 
 to make an OS. Other MichaelOSs also exist which is
-pretty cool
+pretty cool.
+https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf
 
 ### Dev Enviorment
 ##### Installation
