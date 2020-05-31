@@ -9,5 +9,6 @@ sudo apt-get install qemu-kvm qemu virt-manager virt-viewer libvirt-bin <br/>
 sudo apt install nasm
 ##### Usage
 qemu-system-x86\_64 [file] <br/>
-nasm -f [ams] -o [ofile]
+nasm -f [ams] -o [ofile] <br/>
+xxd (examine bin files) <br/>
 
