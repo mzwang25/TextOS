@@ -1,6 +1,6 @@
 ; This is a bootsector in assembly
 ; The bootsector is 512 bytes and must end with word 0xaa55
-mov ah, 0x0e ; tty mode
+mov ah, 0x0e ; this is a mode that displays a char
 mov al, 'H'
 int 0x10
 mov al, 'e'
@@ -12,22 +12,7 @@ int 0x10
 mov al, 'o'
 int 0x10
 
-mov al, 0x20
-int 0x10
-mov al, 'W'
-int 0x10
-mov al, 'o'
-int 0x10
-mov al, 'r'
-int 0x10
-mov al, 'l'
-int 0x10
-mov al, 'd'
-int 0x10
-mov al, '!'
-int 0x10
-
-jmp $
+jmp $ ; jmp to itself
 
 ; This tells the assembler to pad with 0s until 510's byte 
 ; $ is current position and $$ is beginning of section .. so ($-$$) is
