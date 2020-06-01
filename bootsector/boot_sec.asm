@@ -1,18 +1,18 @@
+; Global Offset 0x7c00 (where boot sector starts)
+[org 0x7c00]
+
 ; This is a bootsector in assembly
 ; The bootsector is 512 bytes and must end with word 0xaa55
-mov ah, 0x0e ; this is a mode that displays a char
-mov al, 'H'
-int 0x10
-mov al, 'e'
-int 0x10
-mov al, 'l'
-int 0x10
-mov al, 'l'
-int 0x10
-mov al, 'o'
-int 0x10
+; Operates in 16-bit mode
+mov bx, intro
+call print_string
 
-jmp $ ; jmp to itself
+jmp $
+
+%include "print.asm"
+
+intro:
+    db 'Hi, I am the MichaelOS Bootsector!', 0
 
 ; This tells the assembler to pad with 0s until 510's byte 
 ; $ is current position and $$ is beginning of section .. so ($-$$) is
