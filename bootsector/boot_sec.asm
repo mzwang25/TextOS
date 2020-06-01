@@ -1,12 +1,12 @@
 ; Global Offset 0x7c00 (where boot sector starts)
-[org 0x7c00]
+;[org 0x7c00]
 
 ; This is a bootsector in assembly
 ; The bootsector is 512 bytes and must end with word 0xaa55
 ; Operates in 16-bit mode
-mov bx, intro
-call print_string
+mov ah, 0x0e
 
+%include "segmentation.asm"
 jmp $
 
 %include "print.asm"

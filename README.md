@@ -13,3 +13,7 @@ qemu-system-x86\_64 [file] <br/>
 nasm -f [ams] -o [ofile] <br/>
 xxd (examine bin files) <br/>
 
+##### Other
+Registers cs, ds, ss, and es specifies the offset for data. They refer to 
+code, data, stack, and user-defined. 
+
