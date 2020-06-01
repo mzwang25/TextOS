@@ -1,10 +1,8 @@
 ## MichaelOS
-I'm going to try my best to follow through a tutorial 
-to make an OS. Other MichaelOSs also exist which is
-pretty cool.
+I'm going to try my best to follow through this for an OS <br/>
 https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf
 
-### Dev Enviorment
+### Dev
 ##### Installation
 sudo apt-get install qemu-kvm qemu virt-manager virt-viewer libvirt-bin <br/>
 sudo apt install nasm
