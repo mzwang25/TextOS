@@ -12,6 +12,6 @@ nasm -f [ams] -o [ofile] <br/>
 xxd (examine bin files) <br/>
 
 ##### Other
-Registers cs, ds, ss, and es specifies the offset for data. They refer to 
+Registers cs, ds, ss, and es specifies the offset for accessing memory. They refer to 
 code, data, stack, and user-defined. 
 
