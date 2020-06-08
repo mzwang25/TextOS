@@ -12,11 +12,12 @@ disk_load:
     int 0x13 ; BIOS interrupt
 
     ;al is set to the number of sectors actually read
-    jc disc_error ; Jump if carry flag set (which means error) 
+    jc disk_error ; Jump if carry flag set (which means error) 
 
     pop dx ; dx (containing dh) was pushed into stack at beginning (contains num of sectors to read)
     cmp dh, al ; al contained number of original sectors
-    jne dist_error
+    jne disk_error
+
     ret 
 
 disk_error:
