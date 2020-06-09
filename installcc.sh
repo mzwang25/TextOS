@@ -1,8 +1,10 @@
-#Cross Compiler Installation
-#install gmp, mpft, libmpc, and gcc
+# Cross Compiler Installation
+# install gmp, mpft, libmpc, and gcc
+# Executable in /usr/local/i386elfgcc
+# I don't know if this actually works but this is what I did
 
-export CC=/usr/bin/gcc-4.9
-export LD=/usr/bin/gcc-4.9
+export CC=/usr/bin/gcc
+export LD=/usr/bin/gcc
 export PREFIX="/usr/local/i386elfgcc"
 export TARGET=i386-elf
 export PATH="$PREFIX/bin:$PATH"
