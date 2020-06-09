@@ -11,6 +11,8 @@ sudo apt install nasm
 
 #### Cross-Compiler
 https://wiki.osdev.org/GCC_Cross-Compiler <br/>
+sudo apt install libgmp3-dev libmpfr-dev libmpc-dev <br/>
+
 
 ##### Usage
 qemu-system-x86\_64 [file] <br/>
