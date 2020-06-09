@@ -1,5 +1,6 @@
 ; Global Offset 0x7c00 (where boot sector starts)
 [org 0x7c00]
+KERNEL_OFFSET equ 0x1000 ; Location to load kernel into
 
 ; The bootsector is 512 bytes and must end with word 0xaa55
 ; Operates in 16-bit mode
@@ -12,6 +13,10 @@ mov sp, bp
 mov bx, intro
 call print_string
 
+; Load kernel into memory
+call load_kernel
+
+; Switch into 32-bit protected mode
 call switch_to_pm
 
 ; Hang
@@ -22,11 +27,17 @@ jmp $
 %include "32bit-print.asm"
 %include "32bit-switch.asm"
 %include "32bit-gdt.asm"
+%include "load_kernel.asm"
 
 [bits 32]
 BEGIN_PM: ; after switching into 32-bit mode, it'll jump here
     mov ebx, MSG32
     call print_string_pm
+    call KERNEL_OFFSET ; enter into kernel code
+    jmp $
+
+BOOT_DRIVE:
+    db 0
 
 intro:
     db 'Bootsector Loaded!', 0xa, 0xd, 0 ; 0xa newline and 0xd cr
