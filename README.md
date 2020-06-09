@@ -8,6 +8,10 @@ https://www.cs.cmu.edu/~410/
 ##### Installation
 sudo apt-get install qemu-kvm qemu virt-manager virt-viewer libvirt-bin <br/>
 sudo apt install nasm
+
+#### Cross-Compiler
+https://wiki.osdev.org/GCC_Cross-Compiler <br/>
+
 ##### Usage
 qemu-system-x86\_64 [file] <br/>
 nasm -f [ams] -o [ofile] <br/>
