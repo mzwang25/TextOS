@@ -1,4 +1,4 @@
-os-image:
+all: 
 	cd boot; \
 	  make -f boot.mk boot_sec.bin
 	cd kernel; \
