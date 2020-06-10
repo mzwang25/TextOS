@@ -3,5 +3,12 @@
 void main()
 {
     char* video_memory = (char*) VIDEO_MEMORY;
-    *video_memory = 'X';
+    char* msg = "Hello! This is the kernel!";
+
+    while(*msg != 0)
+    {
+        *video_memory = *msg;
+        video_memory += 2;
+        msg++;
+    }
 }
