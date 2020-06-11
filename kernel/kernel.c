@@ -1,5 +1,8 @@
 #define VIDEO_MEMORY 0xb8000
-
+void hello()
+{
+    
+}
 void main()
 {
     char* video_memory = (char*) VIDEO_MEMORY;

@@ -1,9 +1,10 @@
 os-image: kernel/kernel.bin boot/boot_sec.bin
 	cat boot/boot_sec.bin kernel/kernel.bin > os-image
 
-kernel/kernel.bin: kernel/kernel.o
+kernel/kernel.bin: kernel/kernel.o kernel/entry.asm
 	cd kernel; \
-	  i386-elf-ld -Ttext 0x1000 kernel.o --oformat binary -o kernel.bin
+      nasm entry.asm -f elf -o entry.o; \
+	  i386-elf-ld -Ttext 0x1000 entry.o kernel.o --oformat binary -o kernel.bin
 
 kernel/kernel.o: kernel/kernel.c
 	cd kernel; \
