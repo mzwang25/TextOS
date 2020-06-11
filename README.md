@@ -4,6 +4,7 @@ https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf <br/>
 https://www.cs.cmu.edu/~410-s07/p4/p4-boot.pdf <br/>
 https://www.cs.cmu.edu/~410/
 https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile
+http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf
 
 ### Info
 #### Makefile
