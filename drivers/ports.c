@@ -30,7 +30,7 @@ uint16_t read_port_word(uint16_t port)
 }
 
 // writes a word to an IO port
-void write_port_byte(uint16_t port, uint16_t data)
+void write_port_word(uint16_t port, uint16_t data)
 {
     __asm__("out %%ax, %%dx" : : "a" (data), "d" (port));
 }

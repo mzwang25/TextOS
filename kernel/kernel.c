@@ -1,17 +1,18 @@
 #define VIDEO_MEMORY 0xb8000
-void hello()
-{
-    
-}
+#include "../drivers/ports.h"
+
 void main()
 {
-    char* video_memory = (char*) VIDEO_MEMORY;
-    char* msg = "Hello! This is the kernel!";
+    write_port_byte(0x3d4, 14);
 
-    while(*msg != 0)
-    {
-        *video_memory = *msg;
-        video_memory += 2;
-        msg++;
-    }
+    int position = read_port_byte(0x3d5);
+    position = position << 8;
+
+    write_port_byte(0x3d4, 15);
+    position += read_port_byte(0x3d5);
+
+    char* vga = (char*) VIDEO_MEMORY;
+    vga[2 * position] = 'X';
+    vga[2*position + 1] = 0x0f;
+
 }
