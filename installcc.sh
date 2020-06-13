@@ -1,7 +1,6 @@
 # Cross Compiler Installation
 # install gmp, mpft, libmpc, and gcc
 # Executable in /usr/local/i386elfgcc
-# I don't know script works
 
 export CC=/usr/bin/gcc
 export LD=/usr/bin/gcc
