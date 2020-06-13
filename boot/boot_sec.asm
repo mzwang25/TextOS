@@ -22,12 +22,12 @@ call switch_to_pm
 ; Hang
 jmp $
 
-%include "print.asm"
-%include "read_disk.asm"
-%include "32bit-print.asm"
-%include "32bit-switch.asm"
-%include "32bit-gdt.asm"
-%include "load_kernel.asm"
+%include "boot/print.asm"
+%include "boot/read_disk.asm"
+%include "boot/32bit-print.asm"
+%include "boot/32bit-switch.asm"
+%include "boot/32bit-gdt.asm"
+%include "boot/load_kernel.asm"
 
 [bits 32]
 BEGIN_PM: ; after switching into 32-bit mode, it'll jump here
