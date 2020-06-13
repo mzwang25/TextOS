@@ -27,3 +27,4 @@ clean:
 	rm -rf os-image 
 	rm -rf boot/*.bin
 	rm -rf kernel/*.o kernel/*.bin
+	rm -rf drivers/*.o 

@@ -16,6 +16,7 @@
 #define REG_SCREEN_CTRL 0x3d4
 #define REG_SCREEN_DATA 0x3d5
 
+// These macros use char offsets
 #define TEXT_OFFSET(X,Y) ((X * MAX_COLS + Y) * 2)
 #define ATTR_OFFSET(X,Y) ((X * MAX_COLS + Y) * 2 + 1)
 
