@@ -5,10 +5,10 @@ LD = i386-elf-ld
 EMU = qemu-system-i386
 ASM = nasm
 
-os-image: boot/boot_sec.bin kernel.bin
+os-image: boot/boot_sec.bin kernel/kernel.bin
 	cat $^ > os-image
 
-kernel.bin: kernel/entry.o ${OBJ}
+kernel/kernel.bin: kernel/entry.o ${OBJ}
 	$(LD) -o $@ -Ttext 0x1000 $^ --oformat binary
 
 %.o: %.c 
