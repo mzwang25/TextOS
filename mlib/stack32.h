@@ -4,7 +4,7 @@
 #include "types.h"
 
 /*
- * Right now I don't have memory management set up and also don't have the heap.
+ * Right now I don't have memory management set up
  * So Stack32 is implemented with a 32 element long array. Also to simulate having
  * templates in C, I will try to use macros for all data types ... or maybe eventually
  */ 
