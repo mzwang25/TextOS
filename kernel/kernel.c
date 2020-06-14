@@ -4,5 +4,20 @@
 void main()
 {
     clear_screen();
-    print_string("Hello!");
+    strprint("Hello this is the Kernel!\n");
+    strprint("Hello this is the Kernel!\n");
+    strprint("Hello this is the Kernel!\n");
+    strprint("Hello this is the Kernel!\n");
+    strprint("Hello this is the Kernel!\n");
+    strprint("Hello this is the Kernel!\n");
+    strprint("Hello this is the Kernel!\n");
+    strprint("Hello this is the Kernel!\n");
+    strprint("Hello this is the Kernel!\n");
+    strprint("Hello this is the Kernel!\n");
+
+    scroll_up();
+    scroll_up();
+    scroll_up();
+    scroll_up();
+    scroll_up();
 }

@@ -17,21 +17,23 @@
 #define REG_SCREEN_DATA 0x3d5
 
 // These macros use char offsets
-#define TEXT_OFFSET(X,Y) ((X * MAX_COLS + Y) * 2)
-#define ATTR_OFFSET(X,Y) ((X * MAX_COLS + Y) * 2 + 1)
+#define TEXT_OFFSET(X,Y) (((X) * MAX_COLS + (Y)) * 2)
+#define ATTR_OFFSET(X,Y) (((X) * MAX_COLS + (Y)) * 2 + 1)
 
 // X_loc and Y_loc assumes X is a char offset
-#define X_LOC(X) X / MAX_COLS
-#define Y_LOC(X) X % MAX_ROWS
+#define X_LOC(X) (int) (X) / MAX_COLS
+#define Y_LOC(X) (X) % MAX_COLS
 
-#define X2CHAR(X) X / 2
-#define CHAR2TEXT(X) X * 2
-#define CHAR2ATTR(X) X * 2 + 1
+#define X2CHAR(X) (int) (X) / 2
+#define CHAR2TEXT(X) (X) * 2
+#define CHAR2ATTR(X) (X) * 2 + 1
 
 void clear_screen();
 void set_cursor(int text_x, int text_y);
 void print_char_at(char c, int x, int y);
 void print_char(char c);
-void print_string(char* str);
+void strprint(char* str);
+void scroll_up();
+int get_curser_loc();
 
 #endif

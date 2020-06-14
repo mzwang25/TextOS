@@ -56,15 +56,36 @@ void print_char_at(char c, int x, int y)
 void print_char(char c)
 {
     int char_offset = get_curser_loc();
-    print_char_at(c, X_LOC(char_offset), Y_LOC(char_offset));
-    set_cursor(X_LOC(char_offset), Y_LOC(char_offset) + 1);
+
+    if(c == '\n')
+    {
+        set_cursor(X_LOC(char_offset) + 1, 0);
+    }
+    else
+    {
+        print_char_at(c, X_LOC(char_offset), Y_LOC(char_offset));
+        set_cursor(X_LOC(char_offset), Y_LOC(char_offset) + 1);
+    }
 }
 
-void print_string(char* str)
+void strprint(char* str)
 {
     while(*str != 0)
     {
         print_char(*str);
         str++;
+    }
+}
+
+void scroll_up()
+{
+    int i, j;
+
+    for(i = 0; i < MAX_ROWS; i++)
+    {
+        for(j = 0; j < MAX_COLS - 1; j++)
+        {
+            VA[TEXT_OFFSET(i, j)] = VA[TEXT_OFFSET(i+1, j)];
+        }
     }
 }

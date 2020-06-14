@@ -31,8 +31,7 @@ jmp $
 
 [bits 32]
 BEGIN_PM: ; after switching into 32-bit mode, it'll jump here
-    mov ebx, MSG32
-    call print_string_pm
+    ; This is 32-bit mode
     call KERNEL_OFFSET ; enter into kernel code
     jmp $
 
@@ -42,8 +41,6 @@ BOOT_DRIVE:
 intro:
     db 'Bootsector Loaded!', 0xa, 0xd, 0 ; 0xa newline and 0xd cr
 
-MSG32:
-    db 'Now in 32-bit Protected Mode', 0xa, 0xd, 0 ; 0xa newline and 0xd cr
 
 ; This tells the assembler to pad with 0s until 510's byte 
 ; $ is current position and $$ is beginning of section .. so ($-$$) is
