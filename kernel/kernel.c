@@ -4,20 +4,20 @@
 void main()
 {
     clear_screen();
-    strprint("Hello this is the Kernel!\n");
-    strprint("Hello this is the Kernel!\n");
-    strprint("Hello this is the Kernel!\n");
-    strprint("Hello this is the Kernel!\n");
-    strprint("Hello this is the Kernel!\n");
-    strprint("Hello this is the Kernel!\n");
-    strprint("Hello this is the Kernel!\n");
-    strprint("Hello this is the Kernel!\n");
-    strprint("Hello this is the Kernel!\n");
-    strprint("Hello this is the Kernel!\n");
 
-    scroll_up();
-    scroll_up();
-    scroll_up();
-    scroll_up();
-    scroll_up();
+    int i = 0;
+    for(i = 0; i < 23; i++)
+        strprint("Hello this is the Kernel!\n");
+
+    strprint("ATTACK\n");
+    strprint("ATTACK\n");
+    strprint("ATTACK\n");
+    strprint("ATTACK\n");
+    strprint("ATTACK\n");
+    strprint("ATTACK\n");
+    strprint("ATTACK\n");
+    strprint("ATTACK\n");
+    strprint("ATTACK\n");
+    strprint("ATTACK\n");
+
 }

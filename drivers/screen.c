@@ -23,6 +23,12 @@ void set_cursor(int text_x, int text_y)
 {
     int text_offset = X2CHAR(TEXT_OFFSET(text_x, text_y));
 
+    if(text_offset >= MAX_ROWS * MAX_COLS)
+    {
+        scroll_up();
+        text_offset = X2CHAR(TEXT_OFFSET(text_x - 1, 0));
+    }
+
     write_port_byte(REG_SCREEN_CTRL, 14);
     write_port_byte(REG_SCREEN_DATA, text_offset >> 8);
 
@@ -80,7 +86,6 @@ void strprint(char* str)
 void scroll_up()
 {
     int i, j;
-
     for(i = 0; i < MAX_ROWS; i++)
     {
         for(j = 0; j < MAX_COLS - 1; j++)
