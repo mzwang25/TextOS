@@ -1,5 +1,5 @@
 # Cross Compiler Installation
-# install gmp, mpft, libmpc, and gcc
+# install gmp, mpft, libmpc, gcc, and libncurses5-dev
 # Executable in /usr/local/i386elfgcc
 
 export CC=/usr/bin/gcc
@@ -27,3 +27,15 @@ make all-gcc
 make all-target-libgcc 
 make install-gcc 
 make install-target-libgcc 
+
+# For GDB
+cd /tmp/src
+curl -O http://ftp.rediris.es/mirror/GNU/gdb/gdb-7.8.tar.gz
+tar xf gdb-7.8.tar.gz
+mkdir gdb-build
+cd gdb-build
+export PREFIX="/usr/local/i386elfgcc"
+export TARGET=i386-elf
+../gdb-7.8/configure --target="$TARGET" --prefix="$PREFIX" --program-prefix=i386-elf-
+make
+make install
