@@ -3,7 +3,7 @@ I'm going to try my best to do an OS <br/>
 https://wiki.osdev.org/Main_Page <br/>
 https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf <br/>
 https://www.cs.cmu.edu/~410-s07/p4/p4-boot.pdf <br/>
-https://www.cs.cmu.edu/~410/
+https://www.cs.cmu.edu/~410/ <br/>
 https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-makefile
 http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf
 
