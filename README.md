@@ -1,5 +1,5 @@
 ## OS
-I'm going to try my best to follow through this for an OS <br/>
+I'm going to try my best to do an OS <br/>
 https://wiki.osdev.org/Main_Page <br/>
 https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf <br/>
 https://www.cs.cmu.edu/~410-s07/p4/p4-boot.pdf <br/>
