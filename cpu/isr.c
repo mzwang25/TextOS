@@ -3,6 +3,9 @@
 #include "../drivers/screen.h"
 #include "../mlib/print.h"
 
+/* 
+ * isr_install creates idt entries for each of these interrupts
+ */
 void isr_install()
 {
     SET_IDT(0)
@@ -41,6 +44,7 @@ void isr_install()
     set_idt();
 }
 
+// isr_handler is called after an interrupt is detected ... r contains all registers
 void isr_handler(registers_t r)
 {
     strprint("\n*** Interrupt ");

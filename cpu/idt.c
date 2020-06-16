@@ -13,7 +13,7 @@ void set_idt_gate(int n, uint32_t handler)
     idt[n].high_offset = (handler >> 16) & 0xFFFF; //Not sure what kind of right shift
 }
 
-// 
+// assembly code (lidtl) to set the idt for use by processor
 void set_idt()
 {
     idt_reg.base = (uint32_t) &idt;
