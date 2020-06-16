@@ -12,7 +12,7 @@ http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf
 #### Kernel
 Need to make sure entire kernel code is loaded into memory or weird stuff happens. To change
 number of disk sectors to load, change line 7 of load_kernel. Each sector is 512 bytes and to 
-check number of bytes of kernel, use <code> wc -c kernel/kernel.bin</code>. <br/>
+check number of bytes of kernel, use <code> wc -c kernel/kernel.bin</code>.
 Paging would be awesome once that's implemented
 
 #### Makefile
