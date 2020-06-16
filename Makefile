@@ -10,10 +10,10 @@ CFLAGS = -g
 os-image: boot/boot_sec.bin kernel/kernel.bin
 	cat $^ > os-image
 
-kernel/kernel.bin: kernel/entry.o ${OBJ}
+kernel/kernel.bin: kernel/entry.o ${OBJ} cpu/interrupt.o
 	$(LD) -o $@ -Ttext 0x1000 $^ --oformat binary
 
-kernel/kernel.elf: kernel/entry.o ${OBJ}
+kernel/kernel.elf: kernel/entry.o ${OBJ} cpu/interrupt.o
 	$(LD) -o $@ -Ttext 0x1000 $^
 
 %.o: %.c 
@@ -37,3 +37,4 @@ clean:
 	rm -rf boot/*.bin
 	rm -rf kernel/*.o kernel/*.bin
 	rm -rf drivers/*.o 
+	rm -rf cpu/*.o cpu/*.bin

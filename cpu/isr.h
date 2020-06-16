@@ -7,6 +7,7 @@
 
 #include "../mlib/types.h"
 #define ISR_DEC(X) extern void isr##X();
+#define SET_IDT(X) set_idt_gate(X, (uint32_t) isr##X);
 
 // this struct combines all the registers
 typedef struct 
