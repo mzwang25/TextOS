@@ -1,4 +1,4 @@
-C_SOURCES = $(wildcard kernel/*.c drivers/*.c mlib/*.c)
+C_SOURCES = $(wildcard kernel/*.c drivers/*.c mlib/*.c cpu/*.c)
 OBJ = ${C_SOURCES:.c=.o}
 CC = i386-elf-gcc
 LD = i386-elf-ld

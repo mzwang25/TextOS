@@ -3,7 +3,7 @@
 
 #include "../mlib/types.h"
 
-#define KERNEL_CS 0x08
+#define KERNEL_CS 0x08 //8 bytes into GDT which is the code segment
 #define IDT_ENTRIES 256
 
 typedef struct

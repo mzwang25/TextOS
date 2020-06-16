@@ -5,7 +5,7 @@
 void main()
 {
     clear_screen();
-    printnum(12345, 0);
+    printint(12345);
 
 
     
