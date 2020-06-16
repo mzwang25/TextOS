@@ -8,6 +8,12 @@ https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-m
 http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf
 
 ### Info
+
+#### Kernel
+Need to make sure entire kernel code is loaded into memory or weird stuff happens. To change
+number of disk sectors to load, change line 7 of load_kernel. Each sector is 512 bytes and to 
+check number of bytes of kernel, use <code> wc -c kernel/kernel.bin</code>.
+
 #### Makefile
 Pretty Bad I gotta fix it
 
