@@ -2,13 +2,12 @@
 #include "../mlib/print.h"
 #include "../mlib/stack32.h"
 #include "../cpu/isr.h"
+#include "../drivers/keyboard.h"
 
 void main()
 {
+    asm volatile("sti");
+    isr_install();
     clear_screen();
     strprint("Hello! You entered the Kernel!\n");
-
-    isr_install();
-    __asm__ __volatile__("int $33");
-    strprint("You're Back From the Kernel!\n");
 }

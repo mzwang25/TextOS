@@ -3,6 +3,7 @@
 #include "../drivers/screen.h"
 #include "../mlib/print.h"
 #include "../drivers/ports.h"
+#include "../drivers/keyboard.h"
 
 /* 
  * isr_install creates idt entries for each of these interrupts
@@ -98,7 +99,7 @@ void irq_handler(registers_t r)
 
     write_port_byte(MASTER_PIC_COMMAND, 0x20);
 
-    strprint("\n*** IRQ ");
-    printint(r.int_no);
-    strprint(" detected! ***\n");
+    if(r.int_no == 33)
+        keyboard_callback(r);
+
 }

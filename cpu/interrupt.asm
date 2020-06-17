@@ -36,10 +36,10 @@ irq_common_stub:
     call irq_handler
 
     pop ebx 
-    mov ds, ax 
-    mov es, ax 
-    mov fs, ax 
-    mov gs, ax 
+    mov ds, bx 
+    mov es, bx 
+    mov fs, bx 
+    mov gs, bx 
     popa 
     add esp, 8
     sti 
@@ -327,7 +327,7 @@ isr32:
 isr33:
     cli
     push byte 1
-    push byte 32 
+    push byte 33 
     jmp irq_common_stub
 
 isr34:
