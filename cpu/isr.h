@@ -9,6 +9,11 @@
 #define ISR_DEC(X) extern void isr##X();
 #define SET_IDT(X) set_idt_gate(X, (uint32_t) isr##X);
 
+#define MASTER_PIC_COMMAND 0x20
+#define MASTER_PIC_DATA 0x21
+#define SLAVE_PIC_COMMAND 0xA0
+#define SLAVE_PIC_DATA 0xA1
+
 // this struct combines all the registers
 typedef struct 
 {
@@ -53,5 +58,23 @@ ISR_DEC(28)
 ISR_DEC(29)
 ISR_DEC(30)
 ISR_DEC(31)
+
+// IRQ definitions
+ISR_DEC(32) //irq0
+ISR_DEC(33) //irq1
+ISR_DEC(34) //2
+ISR_DEC(35) //3
+ISR_DEC(36) //4
+ISR_DEC(37) //5
+ISR_DEC(38) //6
+ISR_DEC(39) //7
+ISR_DEC(40) //8
+ISR_DEC(41) //9
+ISR_DEC(42) //10
+ISR_DEC(43) //11
+ISR_DEC(44) //12
+ISR_DEC(45) //13
+ISR_DEC(46) //14
+ISR_DEC(47) //15
 
 #endif

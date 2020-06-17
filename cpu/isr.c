@@ -2,6 +2,7 @@
 #include "idt.h"
 #include "../drivers/screen.h"
 #include "../mlib/print.h"
+#include "../drivers/ports.h"
 
 /* 
  * isr_install creates idt entries for each of these interrupts
@@ -41,6 +42,42 @@ void isr_install()
     SET_IDT(30)
     SET_IDT(31)
 
+    // Need to remap the PIC because PIC by default maps to already used vectors
+    // absolutely no clue how this code works
+
+    write_port_byte(MASTER_PIC_COMMAND, 0x11);
+    write_port_byte(SLAVE_PIC_COMMAND, 0x11);
+
+    write_port_byte(MASTER_PIC_DATA, 0x20);
+    write_port_byte(SLAVE_PIC_DATA, 0x28);
+
+    write_port_byte(MASTER_PIC_DATA, 0x04);
+    write_port_byte(SLAVE_PIC_DATA, 0x02);
+    
+    write_port_byte(MASTER_PIC_DATA, 0x01);
+    write_port_byte(SLAVE_PIC_DATA, 0x01);
+
+    write_port_byte(MASTER_PIC_DATA, 0x0);
+    write_port_byte(SLAVE_PIC_DATA, 0x0);
+
+    // Now install the IRQs
+    SET_IDT(32)
+    SET_IDT(33)
+    SET_IDT(34)
+    SET_IDT(35)
+    SET_IDT(36)
+    SET_IDT(37)
+    SET_IDT(38)
+    SET_IDT(39)
+    SET_IDT(40)
+    SET_IDT(41)
+    SET_IDT(42)
+    SET_IDT(43)
+    SET_IDT(44)
+    SET_IDT(45)
+    SET_IDT(46)
+    SET_IDT(47)
+    
     set_idt();
 }
 
@@ -48,6 +85,20 @@ void isr_install()
 void isr_handler(registers_t r)
 {
     strprint("\n*** Interrupt ");
+    printint(r.int_no);
+    strprint(" detected! ***\n");
+}
+
+// irq_handler called after irq is detected ... r contains all registers
+
+void irq_handler(registers_t r)
+{
+    if(r.int_no >= 40)
+        write_port_byte(MASTER_PIC_DATA, 0x20);
+
+    write_port_byte(MASTER_PIC_COMMAND, 0x20);
+
+    strprint("\n*** IRQ ");
     printint(r.int_no);
     strprint(" detected! ***\n");
 }

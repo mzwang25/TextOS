@@ -9,6 +9,6 @@ void main()
     strprint("Hello! You entered the Kernel!\n");
 
     isr_install();
-    __asm__ __volatile__("int $2");
+    __asm__ __volatile__("int $33");
     strprint("You're Back From the Kernel!\n");
 }

@@ -1,4 +1,5 @@
 [extern isr_handler]
+[extern irq_handler]
 
 isr_common_stub:
     pusha;
@@ -22,6 +23,27 @@ isr_common_stub:
     sti 
     iret
 
+irq_common_stub:
+    pusha;
+    mov ax, ds
+    push eax 
+    mov ax, 0x10
+    mov ds, ax
+    mov es, ax 
+    mov fs, ax 
+    mov gs, ax 
+
+    call irq_handler
+
+    pop ebx 
+    mov ds, ax 
+    mov es, ax 
+    mov fs, ax 
+    mov gs, ax 
+    popa 
+    add esp, 8
+    sti 
+    iret
 global isr0 
 global isr1
 global isr2 
@@ -54,6 +76,25 @@ global isr28
 global isr29
 global isr30
 global isr31
+
+
+global isr31
+global isr32
+global isr33
+global isr34
+global isr35
+global isr36
+global isr37
+global isr38
+global isr39
+global isr40
+global isr41
+global isr42
+global isr43
+global isr44
+global isr45
+global isr46
+global isr47
 
 ; 0: Divide By Zero Exception
 isr0:
@@ -272,3 +313,103 @@ isr31:
     push byte 0
     push byte 31
     jmp isr_common_stub
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Now for irqs
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+isr32:
+    cli
+    push byte 0
+    push byte 32 
+    jmp irq_common_stub
+
+isr33:
+    cli
+    push byte 1
+    push byte 32 
+    jmp irq_common_stub
+
+isr34:
+    cli
+    push byte 2
+    push byte 34 
+    jmp irq_common_stub
+
+isr35:
+    cli
+    push byte 3
+    push byte 35 
+    jmp irq_common_stub
+
+isr36:
+    cli
+    push byte 4
+    push byte 36 
+    jmp irq_common_stub
+
+isr37:
+    cli
+    push byte 5
+    push byte 37 
+    jmp irq_common_stub
+
+isr38:
+    cli
+    push byte 6
+    push byte 38 
+    jmp irq_common_stub
+
+isr39:
+    cli
+    push byte 7
+    push byte 39 
+    jmp irq_common_stub
+
+isr40:
+    cli
+    push byte 8
+    push byte 40 
+    jmp irq_common_stub
+
+isr41:
+    cli
+    push byte 9
+    push byte 41 
+    jmp irq_common_stub
+
+isr42:
+    cli
+    push byte 10
+    push byte 42 
+    jmp irq_common_stub
+
+isr43:
+    cli
+    push byte 11
+    push byte 43 
+    jmp irq_common_stub
+
+isr44:
+    cli
+    push byte 12
+    push byte 44 
+    jmp irq_common_stub
+
+isr45:
+    cli
+    push byte 13
+    push byte 45 
+    jmp irq_common_stub
+
+isr46:
+    cli
+    push byte 14
+    push byte 46 
+    jmp irq_common_stub
+
+isr47:
+    cli
+    push byte 15
+    push byte 47
+    jmp irq_common_stub

@@ -4,7 +4,7 @@ load_kernel:
     call print_string 
 
     mov bx, KERNEL_OFFSET 
-    mov dh, 17 ; 15 segments which is 17*512 = 8704 bytes
+    mov dh, 20 ; 20 512-byte segments
     mov dl, [BOOT_DRIVE]
     call disk_load
     ret
