@@ -1,5 +1,6 @@
 ## OS
 I'm going to try my best to do an OS <br/>
+http://www.jamesmolloy.co.uk/tutorial_html/6.-Paging.html <br/>
 https://wiki.osdev.org/Main_Page <br/>
 https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf <br/>
 https://www.cs.cmu.edu/~410-s07/p4/p4-boot.pdf <br/>
@@ -13,6 +14,7 @@ http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf
 Need to make sure entire kernel code is loaded into memory or weird stuff happens. To change
 number of disk sectors to load, change line 7 of load_kernel. Each sector is 512 bytes and to 
 check number of bytes of kernel, use <code> wc -c kernel/kernel.bin</code>.
+Paging would be awesome once that's implemented.
 
 #### Makefile
 Pretty Bad I gotta fix it
