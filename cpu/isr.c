@@ -5,6 +5,9 @@
 #include "../drivers/ports.h"
 #include "../drivers/keyboard.h"
 
+#define IRQINDEX(X) (X - 32)
+void (*handlers[16])(registers_t) = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+
 /* 
  * isr_install creates idt entries for each of these interrupts
  */
@@ -90,8 +93,15 @@ void isr_handler(registers_t r)
     strprint(" detected! ***\n");
 }
 
-// irq_handler called after irq is detected ... r contains all registers
+// set_irq_handler gives a handler for interrupt (intno)
+// !!! BUT ONLY FOR IRQs
+void set_irq_handler(uint8_t int_no, void (*func)(registers_t))
+{
+    if(IRQINDEX(int_no) >= 0)
+        handlers[IRQINDEX(int_no)] = func;
+}
 
+// irq_handler called after irq is detected ... r contains all registers
 void irq_handler(registers_t r)
 {
     if(r.int_no >= 40)
@@ -99,7 +109,7 @@ void irq_handler(registers_t r)
 
     write_port_byte(MASTER_PIC_COMMAND, 0x20);
 
-    if(r.int_no == 33)
-        keyboard_callback(r);
+    if(IRQINDEX(r.int_no) >= 0 && handlers[IRQINDEX(r.int_no)] != 0)
+        handlers[IRQINDEX(r.int_no)](r);
 
 }

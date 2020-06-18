@@ -8,6 +8,7 @@ void main()
 {
     asm volatile("sti");
     isr_install();
+    initialize_keyboard();
     clear_screen();
     strprint("Hello! You entered the Kernel!\n");
 }
