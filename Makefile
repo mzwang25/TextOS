@@ -38,3 +38,4 @@ clean:
 	rm -rf kernel/*.o kernel/*.bin
 	rm -rf drivers/*.o 
 	rm -rf cpu/*.o cpu/*.bin
+	rm -rf mlib/*.o
