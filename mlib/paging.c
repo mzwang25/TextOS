@@ -12,7 +12,7 @@
  * 
  **/
 
-/** GET_FRAME_INFO
+/** GET_FRAME_INFO Macro
  * This declares three vars
  *   - framenum
  *   - f_index 
@@ -27,7 +27,6 @@
 // placement_address defined in kheap.c
 // don't think it's the best idea to do this!
 extern uint32_t placement_address;
-
 
 uint32_t* frames;
 uint32_t nframes;
@@ -46,10 +45,30 @@ void set_frame(uint32_t frame_addr)
 void clear_frame(uint32_t frame_addr)
 {
     GET_FRAME_INFO(frame_addr);
+    frames[f_index] &= ~(0x1 << f_offset);
 }
 
 // clear a bit in the frames bitset
-void test_frame(uint32_t frame_addr)
+uint32_t test_frame(uint32_t frame_addr)
 {
     GET_FRAME_INFO(frame_addr);
+    return (frames[f_index] & (0x1 << f_offset));
+}
+
+// returns framenum of the first frame
+uint32_t first_frame()
+{
+    uint32_t i, j;
+    for(i = 0; i < F_INDEX(nframes); i++)
+    {
+        if(frames[i] != 0xFFFFFFFF)
+        {
+            for(j = 0; j < 32; j++)
+            {
+                uint32_t toTest = 0x1 << j;
+                if(!(frames[i] & toTest))
+                    return i*32 + j;
+            }
+        }
+    }
 }
