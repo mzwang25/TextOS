@@ -25,7 +25,7 @@ GDT. Next stack is updated to 0x90000 since we're in
 KERNEL_OFFSET. <br/>
 
 KERNEL_OFFSET is where the kernel code was loaded. This 
-code is located in entry.asm. And all this does is it 
+code is located in kernel/entry.asm. And all this does is it 
 calls the main function. This is the entry point into
 the kernel code
 
