@@ -9,6 +9,25 @@ https://stackoverflow.com/questions/1789594/how-do-i-write-the-cd-command-in-a-m
 http://pages.cs.wisc.edu/~remzi/OSTEP/vm-segmentation.pdf
 
 ### Info
+#### Booting
+Boot/ contains most of the boot process. In 16-bit real 
+mode, it sets the stack to 0x8000. Then it prints "Boot 
+Sector Loaded!" and then attempts to load the kernel. Load
+kernel loads X number of 512-byte segments into memory at 
+KERNEL_OFFSET. Next it loads the gdt. The gdt contains two
+segments (code and data). They both have base 0x0 and max 
+segment length. There really isn't a use for segments yet.
+After loading and changing the cr0 register, a far jump is 
+taken to init_pm. Init_pm is in 32-bit protected mode. It 
+then updates the segment registers for the entries in the
+GDT. Next stack is updated to 0x90000 since we're in 
+32 bit mode. Finally it calls BEGIN_PM. BEGIN_PM calls
+KERNEL_OFFSET. <br/>
+
+KERNEL_OFFSET is where the kernel code was loaded. This 
+code is located in entry.asm. And all this does is it 
+calls the main function. This is the entry point into
+the kernel code
 
 #### Kernel
 Need to make sure entire kernel code is loaded into memory or weird stuff happens. To change
