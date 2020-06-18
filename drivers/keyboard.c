@@ -20,11 +20,7 @@ void keyboard_callback(registers_t r)
 }
 
 void print_letter(uint8_t scancode) {
-    /*
-    printint((int) scancode);
-    strprint("\n");
-    return;
-    */
+
     if(scancode == 42) // shift in
     {
         state_shift = 1;
