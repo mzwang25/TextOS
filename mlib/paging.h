@@ -3,6 +3,10 @@
 
 #include "types.h"
 
+#define PAGE_TABLE_ENTRIES 1024
+#define PAGE_DIR_ENTRIES 1024
+#define MAX_PHYSICAL_MEMORY 0x1000000;
+
 /**
  * Page Directory entries are 32 bit
  * They are 4 KiB aligned so last 12
@@ -43,7 +47,10 @@ typedef struct
 
 } page_table_entry_t;
 
+page_table_entry_t* page_table[PAGE_TABLE_ENTRIES];
+page_directory_entry_t* page_dir[PAGE_DIR_ENTRIES];
 
+void initialize_paging();
 
 
 #endif

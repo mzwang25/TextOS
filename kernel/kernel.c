@@ -3,15 +3,18 @@
 #include "../mlib/stack32.h"
 #include "../cpu/isr.h"
 #include "../drivers/keyboard.h"
+#include "../mlib/paging.h"
+#include "../mlib/kmalloc.h"
 
 void main()
 {
-    asm volatile("sti");
-    isr_install();
-    initialize_keyboard();
     clear_screen();
-
     strprint("Hello! You entered the Kernel!\n");
 
+    asm volatile("sti");
+    isr_install();
+
+    initialize_paging();
+    //initialize_keyboard();
 
 }

@@ -21,3 +21,8 @@ void printint(int num)
         print_char(stack32_pop_char(&s32));
     }
 }
+
+void printstr(char* str)
+{
+    strprint(str);
+}
