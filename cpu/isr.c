@@ -7,6 +7,7 @@
 
 #define IRQINDEX(X) (X - 32)
 void (*handlers[16])(registers_t) = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+void (*handlers_isr[16])(registers_t) = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 /* 
  * isr_install creates idt entries for each of these interrupts
@@ -88,13 +89,16 @@ void isr_install()
 // isr_handler is called after an interrupt is detected ... r contains all registers
 void isr_handler(registers_t r)
 {
-    strprint("\n*** Interrupt ");
-    printint(r.int_no);
-    strprint(" detected! ***\n");
+    handlers_isr[r.int_no](r);
 }
 
 // set_irq_handler gives a handler for interrupt (intno)
-// !!! BUT ONLY FOR IRQs
+void set_isr_handler(uint8_t int_no, void (*func)(registers_t))
+{
+    handlers[int_no] = func;
+}
+
+// set_irq_handler gives a handler for interrupt (intno)
 void set_irq_handler(uint8_t int_no, void (*func)(registers_t))
 {
     if(IRQINDEX(int_no) >= 0)
