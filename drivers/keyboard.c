@@ -40,5 +40,5 @@ void keyboard_callback(registers_t r)
 
 void initialize_keyboard()
 {
-    set_irq_handler(33, keyboard_callback);
+    set_int_handler(33, keyboard_callback);
 }

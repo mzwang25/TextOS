@@ -25,8 +25,7 @@ typedef struct
 
 void isr_install();
 void isr_handler(registers_t r);
-void set_isr_handler(uint8_t int_no, void (*func)(registers_t));
-void set_irq_handler(uint8_t int_no, void (*func)(registers_t));
+void set_int_handler(uint8_t int_no, void (*func)(registers_t));
 
 ISR_DEC(0)
 ISR_DEC(1)

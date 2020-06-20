@@ -2,12 +2,11 @@
 #include "idt.h"
 #include "../drivers/screen.h"
 #include "../mlib/print.h"
+#include "../mlib/mem.h"
 #include "../drivers/ports.h"
 #include "../drivers/keyboard.h"
 
-#define IRQINDEX(X) (X - 32)
-void (*handlers[16])(registers_t) = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-void (*handlers_isr[16])(registers_t) = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+void (*handlers[48])(registers_t);
 
 /* 
  * isr_install creates idt entries for each of these interrupts
@@ -83,26 +82,20 @@ void isr_install()
     SET_IDT(46)
     SET_IDT(47)
     
+    bzero(handlers, 48); 
     set_idt();
 }
 
 // isr_handler is called after an interrupt is detected ... r contains all registers
 void isr_handler(registers_t r)
 {
-    handlers_isr[r.int_no](r);
+    handlers[r.int_no](r);
 }
 
 // set_irq_handler gives a handler for interrupt (intno)
-void set_isr_handler(uint8_t int_no, void (*func)(registers_t))
+void set_int_handler(uint8_t int_no, void (*func)(registers_t))
 {
     handlers[int_no] = func;
-}
-
-// set_irq_handler gives a handler for interrupt (intno)
-void set_irq_handler(uint8_t int_no, void (*func)(registers_t))
-{
-    if(IRQINDEX(int_no) >= 0)
-        handlers[IRQINDEX(int_no)] = func;
 }
 
 // irq_handler called after irq is detected ... r contains all registers
@@ -113,7 +106,7 @@ void irq_handler(registers_t r)
 
     write_port_byte(MASTER_PIC_COMMAND, 0x20);
 
-    if(IRQINDEX(r.int_no) >= 0 && handlers[IRQINDEX(r.int_no)] != 0)
-        handlers[IRQINDEX(r.int_no)](r);
+    if((r.int_no) >= 0 && handlers[(r.int_no)] != 0)
+        handlers[(r.int_no)](r);
 
 }
