@@ -5,7 +5,7 @@
 
 #define PAGE_TABLE_ENTRIES 1024
 #define PAGE_DIR_ENTRIES 1024
-#define MAX_PHYSICAL_MEMORY 0x1000000;
+#define MAX_PHYSICAL_MEMORY 0x10000000
 
 /**
  * Page Directory entries are 32 bit
@@ -34,7 +34,7 @@ typedef struct
 typedef struct 
 {
     uint32_t addr               : 20;
-    uint32_t available          :  1;
+    uint32_t available          :  3;
     uint32_t global             :  1;
     uint32_t zero               :  1;
     uint32_t dirty              :  1;
@@ -47,8 +47,11 @@ typedef struct
 
 } page_table_entry_t;
 
-page_table_entry_t* page_table[PAGE_TABLE_ENTRIES];
-page_directory_entry_t* page_dir[PAGE_DIR_ENTRIES];
+typedef struct 
+{
+    page_table_entry_t entries[PAGE_TABLE_ENTRIES];
+} page_table_t;
+
 
 void initialize_paging();
 

@@ -11,10 +11,10 @@ void main()
     clear_screen();
     strprint("Hello! You entered the Kernel!\n");
 
-    asm volatile("sti");
-    isr_install();
+    //asm volatile("sti");
+    //isr_install();
+    //initialize_keyboard();
 
     initialize_paging();
-    //initialize_keyboard();
 
 }
