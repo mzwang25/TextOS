@@ -3,20 +3,15 @@
 #include "kmalloc.h"
 #include "../cpu/isr.h"
 
+uint32_t page_directory[PAGE_DIR_ENTRIES] __attribute__((aligned(4096)));
+uint32_t* first_page_table;
+
 void handle_page_fault(registers_t r)
 {
     printstr("***Page Fault!***\n");
 
     while(1); //spin for now
 }
-
-/**
- * CR3 -> page_dir and each page_dir entry contains a page_table
- * More info in notes/paging.png
- */
-
-uint32_t page_directory[PAGE_DIR_ENTRIES] __attribute__((aligned(4096)));
-uint32_t* first_page_table;
 
 void initialize_paging()
 {
